@@ -1,0 +1,18 @@
+title: Jornal MED
+description: Jornal do MED
+theme: minima
+url: "https://vinberkuko.github.io"
+baseurl: "/Jornal_MED"
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+markdown: kramdown
+permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
