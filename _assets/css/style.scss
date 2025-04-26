@@ -1,0 +1,75 @@
+--- 
+--- 
+@use "sass:color";
+
+/* cores oficiais */
+:root {
+  --verde: #009739; --amarelo: #FEDD00; --azul: 
+  #002776;
+  --branco: #ffffff; --cinza-claro: #f5f5f5; 
+  --cinza-texto: #333333;
+}
+/* reset básico */ * { box-sizing: border-box; 
+  margin: 0; padding: 0;
+}
+body { font-family: 'Segoe UI', system-ui, 
+  sans-serif; line-height: 1.6; color: 
+  var(--cinza-texto); background-color: 
+  var(--cinza-claro);
+}
+/* cabeçalho */ .site-header { background: 
+  linear-gradient(135deg, var(--verde) 0%, 
+  var(--azul) 100%); color: var(--branco); padding: 
+  1.5rem; text-align: center;
+}
+.site-title { font-size: 2.2rem; margin-bottom: 
+  0.5rem;
+}
+/* conteúdo principal */ .main-content { padding: 
+  2rem; max-width: 1200px; margin: 0 auto;
+}
+/* posts */ .post { background: var(--branco); 
+  border-radius: 8px; padding: 2rem; margin-bottom: 
+  2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.post-title { color: var(--azul); margin-bottom: 
+  1rem;
+}
+.post-meta { color: #666; font-size: 0.9rem; 
+  margin-bottom: 1.5rem;
+}
+.post-content { line-height: 1.7;
+}
+/* seções */ .section { margin: 3rem 0;
+}
+.section-title { color: var(--verde); 
+  border-bottom: 2px solid var(--amarelo); 
+  padding-bottom: 0.5rem; margin-bottom: 1.5rem;
+}
+/* rodapé */ .site-footer { background-color: 
+  var(--azul); color: var(--branco); text-align: 
+  center; padding: 2rem; margin-top: 3rem;
+}
+/* responsivo */ @media (max-width: 768px) { 
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .post { padding: 1.5rem;
+  }
+  
+  .site-title { font-size: 1.8rem;
+  }
+}
+/* utilitários */ .highlight { background-color: 
+  color-mix(in srgb, var(--amarelo) 20%, white); 
+  padding: 0.2rem 0.4rem; border-radius: 3px;
+}
+.btn { display: inline-block; background-color: 
+  var(--azul); color: var(--branco); padding: 
+  0.6rem 1.2rem; border-radius: 4px; 
+  text-decoration: none; transition: all 0.3s ease;
+}
+.btn:hover { background-color: var(--verde); 
+  transform: translateY(-2px);
+}
