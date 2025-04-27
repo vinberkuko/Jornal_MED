@@ -1,0 +1,343 @@
+// Variáveis de cores
+$verde: #2ecc71;
+$amarelo: #f1c40f;
+$azul-anil: #34495e;
+$branco: #ffffff;
+$cinza-claro: #f5f5f5;
+$cinza-medio: #e0e0e0;
+$cinza-escuro: #666666;
+$preto: #333333;
+
+// Variáveis de tipografia
+$fonte-principal: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+$fonte-titulos: 'Merriweather', Georgia, serif;
+
+// Variáveis de layout
+$container-max-width: 1200px;
+$container-padding: 20px;
+$border-radius: 4px;
+$spacing-unit: 30px;
+
+// Breakpoints para responsividade
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;
+
+// Mixins para responsividade
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$mobile + 1px}) and (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$tablet + 1px}) and (max-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media (min-width: #{$desktop + 1px}) {
+    @content;
+  }
+}
+
+// Mixins para animações
+@mixin transition($property: all, $duration: 0.3s, $timing: ease) {
+  transition: $property $duration $timing;
+}
+
+@mixin box-shadow($shadow...) {
+  box-shadow: $shadow;
+}
+
+// Reset e estilos base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $fonte-principal;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $preto;
+  background-color: $branco;
+}
+
+a {
+  color: $azul-anil;
+  text-decoration: none;
+  @include transition(color);
+  
+  &:hover {
+    color: $verde;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+// Estilos do cabeçalho
+.site-header {
+  background-color: $branco;
+  border-bottom: 1px solid $cinza-medio;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  @include box-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    img {
+      height: 50px;
+      width: auto;
+    }
+  }
+  
+  .main-nav {
+    ul {
+      display: flex;
+      list-style: none;
+      
+      @include mobile {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: $branco;
+        flex-direction: column;
+        padding: 20px;
+        border-top: 1px solid $cinza-medio;
+        @include box-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        
+        &.active {
+          display: flex;
+        }
+      }
+    }
+    
+    li {
+      margin-left: 20px;
+      
+      @include mobile {
+        margin: 10px 0;
+      }
+    }
+    
+    a {
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: $border-radius;
+      @include transition;
+      
+      &:hover, &.active {
+        background-color: $verde;
+        color: $branco;
+      }
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 30px;
+      height: 24px;
+      position: relative;
+      
+      @include mobile {
+        display: block;
+      }
+      
+      span {
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: $azul-anil;
+        border-radius: 3px;
+        opacity: 1;
+        left: 0;
+        @include transition;
+        
+        &:nth-child(1) {
+          top: 0;
+        }
+        
+        &:nth-child(2) {
+          top: 10px;
+        }
+        
+        &:nth-child(3) {
+          top: 20px;
+        }
+      }
+      
+      &.active {
+        span:nth-child(1) {
+          top: 10px;
+          transform: rotate(45deg);
+        }
+        
+        span:nth-child(2) {
+          opacity: 0;
+        }
+        
+        span:nth-child(3) {
+          top: 10px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+// Estilos do rodapé
+.site-footer {
+  background-color: $azul-anil;
+  color: $branco;
+  padding: 50px 0 20px;
+  margin-top: 60px;
+  
+  a {
+    color: $cinza-claro;
+    
+    &:hover {
+      color: $verde;
+    }
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .footer-logo {
+    img {
+      height: 40px;
+      margin-bottom: 15px;
+    }
+    
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+  
+  .footer-links, .footer-contact {
+    h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: $amarelo;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  
+  .social-links {
+    display: flex;
+    margin-top: 15px;
+    
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      margin-right: 10px;
+      @include transition;
+      
+      &:hover {
+        background-color: $verde;
+      }
+    }
+  }
+  
+  .copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+  }
+}
+
+// Botão Voltar ao Topo
+#back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: $verde;
+  color: $branco;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  @include transition;
+  @include box-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
+  
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  &:hover {
+    background-color: darken($verde, 10%);
+    transform: translateY(-3px);
+  }
+  
+  svg {
+    fill: $branco;
+  }
+}
+
+// Conteúdo principal
+.site-content {
+  min-height: 70vh;
+  padding: 40px 0;
+}

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="logo">
+    <a href="{{ "/" | relative_url }}">
+      <img src="{{ "/assets/images/logo.png" | relative_url }}" alt="{{ site.title }}">
+    </a>
+  </div>
+  <nav class="main-nav">
+    <button class="menu-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul>
+      <li><a href="{{ "/" | relative_url }}" {% if page.url == "/" %}class="active"{% endif %}>Início</a></li>
+      <li><a href="{{ "/politica/" | relative_url }}" {% if page.url contains "/politica/" %}class="active"{% endif %}>Política</a></li>
+      <li><a href="{{ "/saude/" | relative_url }}" {% if page.url contains "/saude/" %}class="active"{% endif %}>Saúde</a></li>
+      <li><a href="{{ "/economia/" | relative_url }}" {% if page.url contains "/economia/" %}class="active"{% endif %}>Economia</a></li>
+      <li><a href="{{ "/tecnologia/" | relative_url }}" {% if page.url contains "/tecnologia/" %}class="active"{% endif %}>Tecnologia</a></li>
+      <li><a href="{{ "/about/" | relative_url }}" {% if page.url contains "/about/" %}class="active"{% endif %}>Sobre</a></li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,123 @@
+// Animações para elementos da página
+
+// Animação de fade-in para cards
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animação de pulsação para botões de destaque
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Animação de destaque para links
+@keyframes highlight {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Classes de animação
+.animated {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.post-card, .featured-card, .category-card, .related-card {
+  opacity: 0;
+  
+  &.animated {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+}
+
+// Aplicar atraso em sequência para cards
+.posts-grid .post-card:nth-child(1) { animation-delay: 0.1s; }
+.posts-grid .post-card:nth-child(2) { animation-delay: 0.2s; }
+.posts-grid .post-card:nth-child(3) { animation-delay: 0.3s; }
+.posts-grid .post-card:nth-child(4) { animation-delay: 0.4s; }
+.posts-grid .post-card:nth-child(5) { animation-delay: 0.5s; }
+.posts-grid .post-card:nth-child(6) { animation-delay: 0.6s; }
+
+// Animação para botões de destaque
+.read-more, .category-link {
+  &:hover {
+    animation: pulse 0.8s ease-in-out infinite;
+  }
+}
+
+// Animação para links de navegação
+.main-nav a {
+  background-size: 200% 100%;
+  background-image: linear-gradient(to right, transparent 50%, $verde 50%);
+  
+  &:hover {
+    animation: highlight 1s ease infinite;
+  }
+}
+
+// Animação para o botão voltar ao topo
+#back-to-top {
+  transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  
+  &.visible {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  &:hover {
+    animation: pulse 1s ease-in-out infinite;
+  }
+}
+
+// Animação para o menu mobile
+.menu-toggle {
+  span {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+}
+
+// Animação para cards de categoria
+.category-card {
+  &::before {
+    transition: background-color 0.3s ease;
+  }
+  
+  &:hover {
+    .category-link {
+      animation: pulse 0.8s ease-in-out infinite;
+    }
+  }
+}
+
+// Animação para imagens
+.post-image, .featured-image, .related-image {
+  overflow: hidden;
+  
+  img {
+    transition: transform 0.5s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

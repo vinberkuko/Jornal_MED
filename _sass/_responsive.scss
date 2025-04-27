@@ -1,0 +1,120 @@
+@import "animations";
+
+// Estilos responsivos para diferentes dispositivos
+
+// Estilos para dispositivos móveis
+@media (max-width: $mobile) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .site-header {
+    padding: 10px 0;
+    
+    .logo img {
+      height: 40px;
+    }
+  }
+  
+  .featured-post .featured-card {
+    .featured-content {
+      padding: 20px;
+      
+      .featured-title {
+        font-size: 22px;
+      }
+    }
+  }
+  
+  .recent-posts .posts-grid {
+    gap: 20px;
+  }
+  
+  .categories-section .categories-grid {
+    gap: 15px;
+  }
+  
+  .post-header {
+    padding: 30px 0;
+    
+    .post-title {
+      font-size: 26px;
+    }
+  }
+  
+  .post-content {
+    h2 {
+      font-size: 24px;
+    }
+    
+    h3 {
+      font-size: 20px;
+    }
+  }
+  
+  .site-footer {
+    padding: 30px 0 15px;
+  }
+}
+
+// Estilos para tablets
+@media (min-width: #{$mobile + 1px}) and (max-width: #{$tablet}) {
+  .featured-post .featured-card {
+    .featured-content {
+      .featured-title {
+        font-size: 24px;
+      }
+    }
+  }
+  
+  .recent-posts .posts-grid {
+    gap: 25px;
+  }
+}
+
+// Estilos para impressão
+@media print {
+  .site-header, 
+  .site-footer, 
+  #back-to-top, 
+  .share-post, 
+  .related-posts {
+    display: none;
+  }
+  
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+  
+  .post-content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+    
+    &::after {
+      content: " (" attr(href) ")";
+      font-size: 90%;
+    }
+  }
+  
+  img {
+    max-width: 500px;
+  }
+  
+  h2, h3 {
+    page-break-after: avoid;
+  }
+  
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+}
