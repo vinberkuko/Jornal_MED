@@ -1,1 +1,8 @@
-title: Jornal MED
+# _config.yml
+title: Jornal MED 
+email: movimentomedbest@gmail.com 
+description: Jornal da Chapa MED - Grêmio Estudantil ETEC BeSt 
+baseurl: "" 
+url: "https://vinberkuko.github.io/Jornal_MED" 
+markdown: kramdown
+include: [".html"]  # Permite que Jekyll processe arquivos HTML
